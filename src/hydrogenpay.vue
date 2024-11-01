@@ -75,7 +75,13 @@ export default {
 			scriptLoaded: null,
 		};
 	},
-	created() {},
+	created() {
+		this.scriptLoaded = new Promise((resolve) => {
+			this.loadScript(() => {
+				resolve();
+			});
+		});
+	},
 	mounted() {
 		if (this.autoCheckout) {
 			this.HydrogenpayCheckout();
@@ -94,7 +100,7 @@ export default {
 				'https://hydrogenshared.blob.core.windows.net/paymentgateway/paymentGatewayIntegration_v1PROD.js';
 			document.head.appendChild(script);
 			if (script.readyState) {
-				// IE
+					// Load Payment Script
 				script.onreadystatechange = () => {
 					if (
 						script.readyState === 'loaded' ||
@@ -119,7 +125,6 @@ export default {
 					let checkStatus;
 					let apiKey = this.apiKey;
 					if (window.handlePgData) {
-						// @ts-ignore
 						const getRef = window.handlePgData(
 							{
 								amount: this.amount,
@@ -146,14 +151,11 @@ export default {
 						const transactionRef = await getRef;
 
 						//pooling transaction status
-
 						if (
 							transactionRef &&
 							transactionRef !== 'Error in initiating payment'
 						) {
 							checkStatus = setInterval(async function () {
-								console.log(this.apiKey);
-								//@ts-ignore
 								const checkPaymentStatus = await window.handlePaymentStatus(
 									transactionRef,
 									apiKey
@@ -162,7 +164,6 @@ export default {
 								if (checkPaymentStatus?.status === 'Paid') {
 									this.onSuccess &&
 										this.onSuccess(checkPaymentStatus, () =>
-											//@ts-ignore
 											window?.closeModal({ transactionRef })
 										);
 									clearInterval(checkStatus);
