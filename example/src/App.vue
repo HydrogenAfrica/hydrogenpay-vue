@@ -18,6 +18,15 @@ export default {
       endDate: '2025-10-02', // OPTIONAL but (REQUIRED when isRecurring: true)
       buttonText: 'Pay With Hydrogen',
       autoOpenCheckout: false,
+      transactionRef: `txn_${new Date().getTime()}`, // OPTIONAL
+      metaData: [
+        // {
+        //   fieldName: 'uniqueId',
+        //   fieldDefaultValue: 'DevStore14',
+        //   fieldKey: 'uniqueId',
+        //   fieldType: 1,
+        // },
+      ], // OPTIONAL
     }
   },
   methods: {
@@ -50,6 +59,8 @@ export default {
       :endDate="endDate"
       :buttonText="buttonText"
       :autoOpenCheckout="autoOpenCheckout"
+      :transactionRef="transactionRef"
+      :metaData="metaData"
     />
   </div>
 </template>
