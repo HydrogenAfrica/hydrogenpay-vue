@@ -1,6 +1,6 @@
 {
 	"name": "hydrogenpay-vue",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Hydrogen Pay VueJS Component for Vue 3",
 	"main": "dist/hydrogenpay-vue3.mjs",
 	"type": "module",
@@ -14,19 +14,27 @@
 		"prod": "vue-cli-service --mode prod build"
 	},
 	"keywords": [
-    "Hydrogen",
+		"Hydrogen",
 		"HydrogenPay",
 		"Vue",
 		"Vuejs",
 		"Vue 3",
 		"Payment Gateway"
 	],
-  "author": "hydrogenpay <support@hydrogenpay.com> (https://github.com/HydrogenAfrica)",
+	"author": "hydrogenpay <support@hydrogenpay.com> (https://github.com/HydrogenAfrica)",
 	"license": "MIT",
 	"dependencies": {
 		"core-js": "^3.8.3",
 		"vue": "^3.5.12"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/HydrogenAfrica/hydrogenpay-vue.git"
+	},
+	"bugs": {
+		"url": "https://github.com/HydrogenAfrica/hydrogenpay-vue/issues"
+	},
+	"homepage": "https://github.com/HydrogenAfrica/hydrogenpay-vue#readme",
 	"devDependencies": {
 		"@babel/core": "^7.12.16",
 		"@babel/eslint-parser": "^7.12.16",
